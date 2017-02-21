@@ -9,68 +9,60 @@
 import UIKit
 import Lottie
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIScrollViewDelegate {
     
-    var menuOn = false
-    var hamburguerMenuButton:LOTAnimationView?
-    let hamburguerMenuFrame = CGRect(x:0, y:10, width: 75, height: 75)
+    @IBOutlet var scrollView: UIScrollView!
+    
+    let animationView = LOTAnimationView.animationNamed("tutorial")
+    let stringArray = ["<-- Swipe to begin", "Welcome to bed", "Dont Forget to clean", "With Water", "Then eat toast", "And go to work"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        addHamburguerMenuButton(on: menuOn)
-    }
-    
-    func addHamburguerMenuButton (on:Bool){
-        if hamburguerMenuButton != nil {
-            hamburguerMenuButton?.removeFromSuperview()
-            hamburguerMenuButton = nil
-        }
-        
-        let animation = on ? "buttonOff" : "buttonOn"
-        
-        hamburguerMenuButton = LOTAnimationView.animationNamed(animation)
-        hamburguerMenuButton?.isUserInteractionEnabled = true
-        hamburguerMenuButton?.frame = hamburguerMenuFrame
-        hamburguerMenuButton?.contentMode = .scaleAspectFill
-        
-        addmenuToggleRecognizer()
-        
-        self.view.addSubview(hamburguerMenuButton!)
-    }
-    
-    func addmenuToggleRecognizer () {
-        let tapRecognizer = UITapGestureRecognizer(target: self, action:
-            #selector(ViewController.toggleMenu(recognizer:)))
-        
-        tapRecognizer.numberOfTapsRequired = 1
-        
-        hamburguerMenuButton?.addGestureRecognizer(tapRecognizer)
-    }
-    
-    func toggleMenu (recognizer:UITapGestureRecognizer) {
-        if !menuOn {
-            hamburguerMenuButton?.play(completion: { (sucess: Bool) in
-                self.menuOn = true
-                self.addHamburguerMenuButton(on: self.menuOn)
-            })
-        } else {
-            hamburguerMenuButton?.play(completion: { (sucess: Bool) in
-                self.menuOn = false
-                self.addHamburguerMenuButton(on: self.menuOn)
-            })
-        }
-    }
-
-    @IBAction func showAnimation(_ sender: UIButton) {
-        let animationView = LOTAnimationView.animationNamed("PinJump")
-        animationView?.frame = CGRect(x: 0, y: 100, width: self.view.frame.size.width, height: 250)
+        animationView?.frame = CGRect(x:0, y: 50, width: self.view.frame.size.width, height: 300)
         animationView?.contentMode = .scaleAspectFill
+        
         animationView?.loopAnimation = true
+        
         self.view.addSubview(animationView!)
         
-        animationView?.play()
+        setupScrollView()
+        
+        //animationView?.play()
+        
+       // let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ViewController.handlePan(recognizer:)))
+        
+        //self.view.addGestureRecognizer(panGestureRecognizer)
+
     }
+    
+    func handlePan (recognizer:UIPanGestureRecognizer) {
+            let translation = recognizer.translation(in: self.view)
+            let progress = translation.x / self.view.bounds.size.width
+        
+            animationView?.animationProgress = progress
+        }
+    
+    func setupScrollView () {
+        scrollView.delegate = self
+            scrollView.contentSize = CGSize(width: self.view.frame.size.width * 6, height: scrollView.frame.size.height)
+        
+        for i in 0 ... 5 {
+            let label = UILabel(frame: CGRect(x: scrollView.center.x + CGFloat(i) * self.view.frame.size.width - 130, y: 50, width: 260, height: 30))
+            label.font = UIFont.boldSystemFont(ofSize: 26)
+            label.textAlignment = .center
+            label.text = stringArray[i]
+            
+            scrollView.addSubview(label)
+            
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let progress = scrollView.contentOffset.x / scrollView.contentSize.width
+        animationView?.animationProgress = progress
+    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

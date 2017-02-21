@@ -15,6 +15,7 @@
 		779687C91E5B3A3E00E7F137 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 779687C71E5B3A3E00E7F137 /* Main.storyboard */; };
 		779687CB1E5B3A3E00E7F137 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 779687CA1E5B3A3E00E7F137 /* Assets.xcassets */; };
 		779687CE1E5B3A3E00E7F137 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 779687CC1E5B3A3E00E7F137 /* LaunchScreen.storyboard */; };
+		77ED6DC71E5BAC1400580845 /* tutorial.json in Resources */ = {isa = PBXBuildFile; fileRef = 77ED6DC61E5BAC1400580845 /* tutorial.json */; };
 		8F633C68C4AE3BAD58BE776D /* Pods_lottie_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0022E6873E22DD5E8431C2 /* Pods_lottie_ios.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		779687CA1E5B3A3E00E7F137 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		779687CD1E5B3A3E00E7F137 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		779687CF1E5B3A3E00E7F137 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77ED6DC61E5BAC1400580845 /* tutorial.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tutorial.json; sourceTree = "<group>"; };
 		BE0022E6873E22DD5E8431C2 /* Pods_lottie_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lottie_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA2C985C5C22DF73678838BE /* Pods-lottie-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lottie-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-lottie-ios/Pods-lottie-ios.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +60,7 @@
 		777E72861E5B474700FE6579 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				77ED6DC61E5BAC1400580845 /* tutorial.json */,
 				777E72801E5B473100FE6579 /* PinJump.json */,
 				777E72811E5B473200FE6579 /* buttonOff.json */,
 				777E72821E5B473200FE6579 /* buttonOn.json */,
@@ -141,7 +144,7 @@
 					779687BF1E5B3A3E00E7F137 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = PN2FR53G7Y;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -173,6 +176,7 @@
 				779687CB1E5B3A3E00E7F137 /* Assets.xcassets in Resources */,
 				779687C91E5B3A3E00E7F137 /* Main.storyboard in Resources */,
 				777E72851E5B473200FE6579 /* buttonOn.json in Resources */,
+				77ED6DC71E5BAC1400580845 /* tutorial.json in Resources */,
 				777E72831E5B473200FE6579 /* PinJump.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,6 +281,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -299,13 +304,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};
@@ -327,14 +333,16 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_NS_ASSERTIONS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -343,9 +351,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
-				MTL_ENABLE_DEBUG_INFO = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				"IPHONEOS_DEPLOYMENT_TARGET[arch=*]" = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = RELEASE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -357,12 +368,19 @@
 			baseConfigurationReference = 33F4CEE4BDD4F9906EE61EE2 /* Pods-lottie-ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = PN2FR53G7Y;
 				INFOPLIST_FILE = "lottie-ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.alexisaraujo.lottie-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexisaraujo.lottie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3b1887ab-aece-4c77-970c-8f64f7851db0";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.alexisaraujo.lottie";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -371,12 +389,21 @@
 			baseConfigurationReference = EA2C985C5C22DF73678838BE /* Pods-lottie-ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = PN2FR53G7Y;
 				INFOPLIST_FILE = "lottie-ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				"IPHONEOS_DEPLOYMENT_TARGET[arch=*]" = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.alexisaraujo.lottie-ios";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexisaraujo.lottie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3b1887ab-aece-4c77-970c-8f64f7851db0";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.alexisaraujo.lottie";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
